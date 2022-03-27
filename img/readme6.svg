@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1063.1 400" style="enable-background:new 0 0 1063.1 400;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#FF1400;stroke-linecap:round;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#FF1400;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:10;}
+	.st3{font-family:'Helvetica';}
+	.st4{font-size:9.1315px;}
+	.st5{font-family:'Helvetica-Oblique';}
+	.st6{font-size:5.3237px;}
+	.st7{fill:none;}
+	.st8{fill:none;stroke:#1D1D1B;stroke-linecap:round;stroke-miterlimit:10;}
+	.st9{fill:#1D1D1B;}
+	.st10{fill:none;stroke:#C2C2C2;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:2,2;}
+	.st11{fill:#FF0E00;}
+</style>
+<g>
+	<rect x="415.6" y="334" class="st0" width="92.2" height="45.3"/>
+	<polygon class="st0" points="415.6,318.4 422.9,318.4 507.9,318.4 507.9,334 415.6,334 	"/>
+	<g>
+		<line class="st1" x1="461.8" y1="373.9" x2="461.8" y2="384.6"/>
+		<line class="st1" x1="467.1" y1="379.3" x2="456.4" y2="379.3"/>
+	</g>
+	<g>
+		<line class="st2" x1="415.6" y1="331.1" x2="415.6" y2="336.8"/>
+		<line class="st2" x1="418.5" y1="334" x2="412.8" y2="334"/>
+	</g>
+	<g>
+		<line class="st2" x1="415.6" y1="315.7" x2="415.6" y2="321.2"/>
+		<line class="st2" x1="418.5" y1="318.4" x2="412.8" y2="318.4"/>
+	</g>
+	<text transform="matrix(1 0 0 1 453.7728 395.6084)" class="st3 st4">L&apos;origine </text>
+	<text transform="matrix(1 0 0 1 490.6058 395.6084)" class="st5 st4">translate()</text>
+	<text transform="matrix(1 0 0 1 127.0901 356.6221)" class="st3 st4">1</text>
+	<text transform="matrix(1 0 0 1 132.1693 353.5811)" class="st3 st6">er</text>
+	<text transform="matrix(1 0 0 1 136.9017 356.6221)" class="st3 st4"> rec</text>
+	<text transform="matrix(1 0 0 1 152.1243 356.6221)" class="st3 st4">t</text>
+	<text transform="matrix(1 0 0 1 154.8441 356.6221)" class="st3 st4">angle</text>
+	<text transform="matrix(1 0 0 1 127.0901 367.5801)" class="st5 st4">settings.Balloon.basket</text>
+	<text transform="matrix(1 0 0 1 140.8089 292.1709)" class="st3 st4">2</text>
+	<text transform="matrix(1 0 0 1 145.888 289.1299)" class="st3 st6">e</text>
+	<text transform="matrix(1 0 0 1 148.848 292.1709)" class="st3 st4"> rec</text>
+	<text transform="matrix(1 0 0 1 164.0696 292.1709)" class="st3 st4">t</text>
+	<text transform="matrix(1 0 0 1 166.7903 292.1709)" class="st3 st4">angle</text>
+	<text transform="matrix(1 0 0 1 140.8089 303.1289)" class="st5 st4">settings.Balloon.border</text>
+	<text transform="matrix(1 0 0 1 21.8919 161.2759)" class="st3 st4">1</text>
+	<text transform="matrix(1 0 0 1 26.972 158.2339)" class="st3 st6">er</text>
+	<text transform="matrix(1 0 0 1 31.7034 161.2759)" class="st3 st4"> ligne</text>
+	<text transform="matrix(1 0 0 1 21.8919 172.2339)" class="st5 st4">settings.Balloon.border</text>
+	<text transform="matrix(1 0 0 1 21.8919 194.1499)" class="st3 st4">Il faut considérer le début de la ligne à partir </text>
+	<text transform="matrix(1 0 0 1 21.8919 205.1064)" class="st3 st4">des hauteurs des 2 rectangles précédents</text>
+	<text transform="matrix(1 0 0 1 654.9485 282.5264)" class="st3 st4">moveTo()</text>
+	<text transform="matrix(1 0 0 1 654.9485 293.5439)" class="st3 st4">beginPath()</text>
+	<text transform="matrix(1 0 0 1 835.0384 245.7285)" class="st3 st4">Vous avez besoin de connaitre cette distance pour</text>
+	<text transform="matrix(1 0 0 1 835.0384 256.7471)" class="st3 st4">calculer la position de certains points</text>
+	<text transform="matrix(1 0 0 1 835.0384 278.627)" class="st5 st4">settings.Balloon.balloon.verticalStretch</text>
+	<text transform="matrix(1 0 0 1 590.3782 203.0791)" class="st3 st4">Point de contrôle pour la fonction </text>
+	<text transform="matrix(1 0 0 1 590.3782 224.959)" class="st5 st4">settings.Balloon.balloon.controlPointY</text>
+	<text transform="matrix(1 0 0 1 595.8128 131.7583)" class="st5 st4">quadraticCurveTo()</text>
+	<text transform="matrix(1 0 0 1 682.1507 7.8413)" class="st3 st4">Ici il faut dessiner un demi cercle</text>
+	<text transform="matrix(1 0 0 1 682.1507 18.8599)" class="st3 st4">avec son rayon</text>
+	<text transform="matrix(1 0 0 1 682.1507 40.7388)" class="st5 st4">settings.Balloon.balloon.radius</text>
+	<text transform="matrix(6.123234e-17 -1 1 6.123234e-17 454.4671 133.6675)" class="st5 st4">settings.Balloon.balloon.radius</text>
+	<g>
+		<line class="st7" x1="297" y1="350" x2="413.6" y2="335.1"/>
+		<g>
+			<line class="st8" x1="213.5" y1="356.6" x2="404.3" y2="336.3"/>
+			<g>
+				<path class="st9" d="M413.6,335.1c-4.2,2.2-9.4,5.7-12.4,9.1l1.7-7.7l-3.6-7.1C403.2,331.9,409,334,413.6,335.1z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line class="st7" x1="274.1" y1="318.4" x2="410.9" y2="318.4"/>
+		<g>
+			<line class="st8" x1="195.7" y1="288.6" x2="401.3" y2="318.4"/>
+			<g>
+				<path class="st9" d="M410.9,318.4c-4.4,1.7-10.1,4.6-13.4,7.6l2.7-7.6l-2.7-7.6C400.8,313.8,406.3,316.6,410.9,318.4z"/>
+			</g>
+		</g>
+	</g>
+	<line class="st0" x1="422.9" y1="318.4" x2="422.9" y2="285.3"/>
+	<line class="st0" x1="499.4" y1="318.4" x2="499.4" y2="285.3"/>
+	<g>
+		<line class="st2" x1="422.9" y1="315.7" x2="422.9" y2="321.2"/>
+		<line class="st2" x1="425.7" y1="318.4" x2="420.2" y2="318.4"/>
+	</g>
+	<g>
+		<line class="st2" x1="508.3" y1="282.5" x2="508.3" y2="288.1"/>
+		<line class="st2" x1="511.2" y1="285.3" x2="505.5" y2="285.3"/>
+	</g>
+	<g>
+		<g>
+			<line class="st8" x1="411.9" y1="309.9" x2="200" y2="177"/>
+			<g>
+				<path class="st9" d="M419.9,314.9c-2.8-3.8-6.1-9.1-7.4-13.5l-1.7,7.7l-6.3,4.9C409,313.3,415.2,314,419.9,314.9z"/>
+			</g>
+		</g>
+	</g>
+	<rect x="335.8" y="2.6" class="st10" width="251.7" height="282.9"/>
+	<circle class="st10" cx="461.8" cy="128.4" r="125.9"/>
+	<g>
+		<g>
+			<path class="st0" d="M335.8,126.6c0.9-68.8,57-124.2,125.8-124.2c69.6,0,125.9,56.4,125.9,125.9"/>
+			<g>
+				<polygon class="st9" points="342.4,121.6 341.3,120.5 336,126 330.8,120.4 329.5,121.3 335.8,128.4 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<path class="st0" d="M412.3,284.1c-9.8-10.1-76.5-81.9-76.5-155.7"/>
+			<g>
+				<polygon class="st9" points="413.4,275.9 411.9,275.9 411.9,283.7 404.1,283.1 404.1,284.7 413.6,285.3 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<path class="st0" d="M509.9,285.3c0,0,76.5-76.2,77.6-155.2"/>
+			<g>
+				<polygon class="st9" points="593.8,135.5 592.6,136.6 587.5,130.7 582,136.3 580.9,135.1 587.5,128.4 				"/>
+			</g>
+		</g>
+	</g>
+	<circle class="st11" cx="588" cy="211.3" r="3.3"/>
+	<g>
+		<line class="st2" x1="587.5" y1="125.5" x2="587.5" y2="131.2"/>
+		<line class="st2" x1="590.4" y1="128.4" x2="584.7" y2="128.4"/>
+	</g>
+	<g>
+		<line class="st2" x1="461.6" y1="125.5" x2="461.6" y2="131.2"/>
+		<line class="st2" x1="464.4" y1="128.4" x2="458.8" y2="128.4"/>
+	</g>
+	<g>
+		<g>
+			<line class="st8" x1="653.5" y1="284.4" x2="527.1" y2="286.6"/>
+			<g>
+				<path class="st9" d="M517.6,286.9c4.4-1.7,9.9-4.7,13.4-7.7l-2.5,7.6l2.8,7.4C527.7,291.1,522.2,288.5,517.6,286.9z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<line class="st0" x1="461.6" y1="283.6" x2="461.6" y2="256"/>
+			<g>
+				<polygon class="st9" points="464.3,280.4 461.6,283.1 458.9,280.4 458.9,282.6 461.6,285.3 464.3,282.6 				"/>
+			</g>
+			<g>
+				<polygon class="st9" points="464.3,259.2 461.6,256.5 458.9,259.2 458.9,256.8 461.6,254.1 464.3,256.8 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<line class="st8" x1="828.5" y1="252.6" x2="480.8" y2="269.3"/>
+			<g>
+				<path class="st9" d="M471.4,269.7c4.4-1.9,9.8-5,13.1-8.2l-2.4,7.6l3,7.4C481.6,273.8,475.9,271.1,471.4,269.7z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<line class="st0" x1="461.6" y1="126.5" x2="461.6" y2="4.2"/>
+			<g>
+				<polygon class="st9" points="464.3,123.3 461.6,126 458.9,123.3 458.9,125.7 461.6,128.4 464.3,125.7 				"/>
+			</g>
+			<g>
+				<polygon class="st9" points="464.3,7.3 461.6,4.7 458.9,7.3 458.9,5 461.6,2.5 464.3,5.1 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
