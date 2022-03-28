@@ -1,17 +1,20 @@
 import {IUpdate} from "./IUpdate";
 import {settings} from "../settings";
-import {random, random2} from "../Helpers/helpers";
+import {Circle} from "./Circle";
+import {random2} from "../Helpers/helpers";
+
 
 export class Tree implements IUpdate {
     private readonly canvas: HTMLCanvasElement;
     private readonly ctx: CanvasRenderingContext2D;
     private readonly height: number;
     private readonly color: string;
-    private readonly position: { x: number, y: number }
+    private position: { x: number, y: number }
     private readonly startPosition: number;
     private readonly verticalStart: number;
     private readonly crownColor: string;
     private readonly width: number;
+    private circles: Circle[];
 
 
     constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, startPosition: number) {
@@ -23,10 +26,17 @@ export class Tree implements IUpdate {
         this.crownColor = settings.tree.crown.color.update(80, 95, 10, 20).toString();
         this.startPosition = startPosition;
         this.verticalStart = (settings.tree.verticalStart.min + Math.random() * (settings.tree.verticalStart.max - settings.tree.verticalStart.min));
-        this.position = {
-            x: this.startPosition,
-            y: this.canvas.height - this.verticalStart
-        };
+        this.circles = [];
+
+        const steeps = Math.trunc(random2(settings.tree.crown.count));
+        const radius = Math.trunc(random2(settings.tree.crown.radius));
+        for (let i = 0; i < 2 * Math.PI; i += (2 * Math.PI) / steeps) {
+            this.circles.push(new Circle(this.ctx, {
+                x: Math.cos(i) * random2(settings.tree.crown.radius),
+                y: -this.height + Math.sin(i) * random2(settings.tree.crown.radius) / 2
+            }, radius));
+        }
+
         this.update();
         this.draw();
     }
@@ -44,24 +54,18 @@ export class Tree implements IUpdate {
         this.ctx.fill();
 
         this.ctx.fillStyle = this.crownColor;
-        const steeps = Math.trunc(random2(settings.tree.crown.count));
-        const radius = Math.trunc(random2(settings.tree.crown.radius));
-        for (let i = 0; i < 2 * Math.PI; i += (2 * Math.PI) / steeps) {
-            const x = Math.cos(i) * random2(settings.tree.crown.radius);
-            const y = -this.height + Math.sin(i) * random2(settings.tree.crown.radius)/2;
-            this.drawCircle(x, y, radius);
-        }
+        this.circles.forEach((circle: Circle) => {
+            circle.draw();
+        });
         this.ctx.restore();
     }
 
-    private drawCircle(cx: number, cy: number, radius: number) {
-        this.ctx.beginPath();
-        this.ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
-        this.ctx.fill();
-    }
 
     update() {
-
+        this.position = {
+            x: this.startPosition,
+            y: this.canvas.height - this.verticalStart
+        };
         this.draw();
     }
 }
