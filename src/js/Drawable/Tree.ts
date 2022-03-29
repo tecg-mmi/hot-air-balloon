@@ -1,19 +1,20 @@
-import {IUpdate} from "./IUpdate";
+import {IDrawable} from "../Interfaces/IDrawable";
 import {settings} from "../settings";
 import {Circle} from "./Circle";
 import {random2} from "../Helpers/helpers";
+import {IAnimate} from "../Interfaces/IAnimate";
 
 
-export class Tree implements IUpdate {
+export class Tree implements IDrawable, IAnimate {
     private readonly canvas: HTMLCanvasElement;
     private readonly ctx: CanvasRenderingContext2D;
     private readonly height: number;
-    private readonly color: string;
+    private readonly trunkColor: string;
     private position: { x: number, y: number }
     private readonly startPosition: number;
     private readonly verticalStart: number;
     private readonly crownColor: string;
-    private readonly width: number;
+    private readonly trunkWidth: number;
     private circles: Circle[];
 
 
@@ -21,8 +22,8 @@ export class Tree implements IUpdate {
         this.canvas = canvas;
         this.ctx = ctx;
         this.height = settings.tree.trunk.height.min + Math.random() * (settings.tree.trunk.height.max - settings.tree.trunk.height.min);
-        this.color = settings.tree.trunk.color.update(35, 45, 15, 20).toString();
-        this.width = settings.tree.trunk.width.min + Math.random() * (settings.tree.trunk.width.max - settings.tree.trunk.width.min);
+        this.trunkColor = settings.tree.trunk.color.update(35, 45, 15, 20).toString();
+        this.trunkWidth = settings.tree.trunk.width.min + Math.random() * (settings.tree.trunk.width.max - settings.tree.trunk.width.min);
         this.crownColor = settings.tree.crown.color.update(80, 95, 10, 20).toString();
         this.startPosition = startPosition;
         this.verticalStart = (settings.tree.verticalStart.min + Math.random() * (settings.tree.verticalStart.max - settings.tree.verticalStart.min));
@@ -38,18 +39,17 @@ export class Tree implements IUpdate {
         }
 
         this.update();
-        this.draw();
     }
 
     draw() {
         this.ctx.save();
         this.ctx.translate(this.position.x, this.position.y);
-        this.ctx.fillStyle = this.color;
+        this.ctx.fillStyle = this.trunkColor;
         this.ctx.beginPath();
-        this.ctx.moveTo(-this.width / 2, 0);
-        this.ctx.quadraticCurveTo(-this.width / 4, -this.height / 2, -this.width / 2, -this.height);
-        this.ctx.lineTo(this.width / 2, -this.height);
-        this.ctx.quadraticCurveTo(this.width / 4, -this.height / 2, this.width / 2, 0);
+        this.ctx.moveTo(-this.trunkWidth / 2, 0);
+        this.ctx.quadraticCurveTo(-this.trunkWidth / 4, -this.height / 2, -this.trunkWidth / 2, -this.height);
+        this.ctx.lineTo(this.trunkWidth / 2, -this.height);
+        this.ctx.quadraticCurveTo(this.trunkWidth / 4, -this.height / 2, this.trunkWidth / 2, 0);
         this.ctx.closePath();
         this.ctx.fill();
 
@@ -66,6 +66,10 @@ export class Tree implements IUpdate {
             x: this.startPosition,
             y: this.canvas.height - this.verticalStart
         };
-        this.draw();
     }
+
+    animate() {
+        this.position.x -= 8;
+    }
+
 }

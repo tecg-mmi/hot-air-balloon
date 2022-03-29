@@ -1,7 +1,7 @@
 import {Hsl} from "../Helpers/Hsl";
-import {IUpdate} from "./IUpdate";
+import {IDrawable} from "../Interfaces/IDrawable";
 
-export class Hill implements IUpdate {
+export class Hill implements IDrawable {
     private readonly canvas: HTMLCanvasElement;
     private readonly ctx: CanvasRenderingContext2D;
     private readonly amplitude: number;
@@ -17,7 +17,7 @@ export class Hill implements IUpdate {
         this.height = height;
         this.startPosition = startPosition;
         this.color = color;
-        this.draw();
+        this.update();
     }
 
     draw() {
@@ -34,7 +34,6 @@ export class Hill implements IUpdate {
     }
 
     update() {
-        this.draw();
     }
 }
 

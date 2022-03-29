@@ -1,7 +1,7 @@
 import {settings} from "../settings";
-import {IUpdate} from "./IUpdate";
+import {IDrawable} from "../Interfaces/IDrawable";
 
-export class Sky implements IUpdate {
+export class Sky implements IDrawable {
     private canvas: HTMLCanvasElement;
     private ctx: CanvasRenderingContext2D;
     private gradient: CanvasGradient;
@@ -9,6 +9,7 @@ export class Sky implements IUpdate {
     constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
         this.canvas = canvas;
         this.ctx = ctx;
+        this.update();
     }
 
     generateGradient() {
@@ -27,7 +28,6 @@ export class Sky implements IUpdate {
 
     update() {
         this.generateGradient();
-        this.draw();
     }
 
 }

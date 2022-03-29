@@ -1,7 +1,7 @@
-import {IUpdate} from "./IUpdate";
+import {IDrawable} from "../Interfaces/IDrawable";
 import {settings} from "../settings";
 
-export class Balloon implements IUpdate {
+export class Balloon implements IDrawable {
     private readonly canvas: HTMLCanvasElement;
     private readonly ctx: CanvasRenderingContext2D;
     private position: { x: number, y: number };
@@ -10,7 +10,7 @@ export class Balloon implements IUpdate {
     constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
         this.canvas = canvas;
         this.ctx = ctx;
-        this.position = {x: settings.Balloon.startPosition.x, y: this.canvas.height - settings.Balloon.startPosition.y}
+        this.update();
     }
 
     draw() {
@@ -38,8 +38,8 @@ export class Balloon implements IUpdate {
         this.ctx.fillStyle = settings.Balloon.balloon.color;
         this.ctx.beginPath();
         this.ctx.moveTo(-(settings.Balloon.border.dimensions.width / 2), -(settings.Balloon.basket.dimensions.height + settings.Balloon.cable.dimensions.height));
-        this.ctx.quadraticCurveTo(-settings.Balloon.balloon.radius, -settings.Balloon.balloon.controlPointY, -settings.Balloon.balloon.radius, -(settings.Balloon.balloon.verticalStretch + settings.Balloon.balloon.radius*2));
-        this.ctx.arc(0, -(settings.Balloon.balloon.verticalStretch + settings.Balloon.balloon.radius*2), settings.Balloon.balloon.radius, Math.PI, 0, false);
+        this.ctx.quadraticCurveTo(-settings.Balloon.balloon.radius, -settings.Balloon.balloon.controlPointY, -settings.Balloon.balloon.radius, -(settings.Balloon.balloon.verticalStretch + settings.Balloon.balloon.radius * 2));
+        this.ctx.arc(0, -(settings.Balloon.balloon.verticalStretch + settings.Balloon.balloon.radius * 2), settings.Balloon.balloon.radius, Math.PI, 0, false);
         this.ctx.quadraticCurveTo(settings.Balloon.balloon.radius, -settings.Balloon.balloon.controlPointY, settings.Balloon.border.dimensions.width / 2, -(settings.Balloon.basket.dimensions.height + settings.Balloon.cable.dimensions.height));
         this.ctx.closePath();
         this.ctx.fill();
@@ -47,6 +47,7 @@ export class Balloon implements IUpdate {
     }
 
     update() {
-        this.draw();
+        this.position = {x: settings.Balloon.startPosition.x, y: this.canvas.height - settings.Balloon.startPosition.y}
     }
+
 }

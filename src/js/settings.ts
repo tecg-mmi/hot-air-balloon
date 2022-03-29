@@ -59,5 +59,9 @@ export const settings = {
             controlPointY: 120,
             verticalStretch: 0
         },
+    },
+    canvas: {
+        id: 'my-canvas',
+        CanvasRenderingContext: '2d'
     }
 }
