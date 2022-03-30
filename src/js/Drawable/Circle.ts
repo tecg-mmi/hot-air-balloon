@@ -1,6 +1,6 @@
 export class Circle {
-    private position: { x: number; y: number }
-    private radius: number;
+    public position: { x: number; y: number }
+    public radius: number;
     private readonly ctx: CanvasRenderingContext2D;
 
     constructor(ctx: CanvasRenderingContext2D, position: { x: number; y: number }, radius: number) {

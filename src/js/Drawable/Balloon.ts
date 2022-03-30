@@ -1,15 +1,24 @@
 import {IDrawable} from "../Interfaces/IDrawable";
 import {settings} from "../settings";
+import {Canvas} from "./Canvas";
+import {Tree} from "./Tree";
+import {getDistance} from "../Helpers/helpers";
+import {Circle} from "./Circle";
 
 export class Balloon implements IDrawable {
-    private readonly canvas: HTMLCanvasElement;
-    private readonly ctx: CanvasRenderingContext2D;
     private position: { x: number, y: number };
+    private velocity: { x: number, y: number };
+    public isHeating: boolean;
+    hitTree: boolean;
+    private canvas: Canvas;
+    private ctx: CanvasRenderingContext2D;
 
 
-    constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
+    constructor(canvas: Canvas) {
         this.canvas = canvas;
-        this.ctx = ctx;
+        this.ctx = this.canvas.ctx;
+        this.isHeating = false;
+        this.velocity = {...settings.Balloon.velocity};
         this.update();
     }
 
@@ -47,7 +56,56 @@ export class Balloon implements IDrawable {
     }
 
     update() {
-        this.position = {x: settings.Balloon.startPosition.x, y: this.canvas.height - settings.Balloon.startPosition.y}
+        this.position = {
+            x: settings.Balloon.startPosition.x,
+            y: this.canvas.htmlCanvasElement.height - settings.Balloon.startPosition.y
+        }
+        console.log(this.position)
     }
 
+    animate() {
+        if (this.isHeating) {
+            this.velocity.y -= settings.Balloon.velocityCooling;
+        } else if (this.velocity.y < settings.Balloon.maxVelocity) {
+            this.velocity.y += settings.Balloon.velocityHeating;
+        }
+        this.position.y += this.velocity.y;
+        if (this.position.y >= this.canvas.htmlCanvasElement.height) {
+            this.hitTree = true;
+        }
+
+        if (this.position.y < this.canvas.htmlCanvasElement.height) {
+            this.position.x += settings.Balloon.velocityHorizontal;
+        }
+        this.checkHit();
+    }
+
+    private checkHit() {
+        this.canvas.trees.forEach((tree: Tree) => {
+            tree.circles.forEach((circle: Circle) => {
+                const bottomRight = {
+                    x: this.position.x + settings.Balloon.basket.dimensions.width / 2,
+                    y: this.position.y
+                };
+
+                const bottomLeft = {
+                    x: this.position.x - settings.Balloon.basket.dimensions.width / 2,
+                    y: this.position.y
+                };
+                const circlePosition = {
+                    x: tree.position.x + circle.position.x,
+                    y: tree.position.y + circle.position.y
+                }
+
+                if (getDistance(bottomRight, circlePosition) <= circle.radius) {
+                    this.hitTree = true;
+                    return;
+                }
+                if (getDistance(bottomLeft, circlePosition) <= circle.radius) {
+                    this.hitTree = true;
+                    return;
+                }
+            });
+        });
+    }
 }

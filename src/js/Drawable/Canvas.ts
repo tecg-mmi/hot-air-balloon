@@ -1,4 +1,3 @@
-import {IDrawable} from "../Interfaces/IDrawable";
 import {Sky} from "./Sky";
 import {settings} from "../settings";
 import {Hill} from "./Hill";
@@ -6,11 +5,10 @@ import {Tree} from "./Tree";
 import {Balloon} from "./Balloon";
 
 export class Canvas {
-    private readonly htmlCanvasElement: HTMLCanvasElement;
-    private drawables: IDrawable[];
+    public readonly htmlCanvasElement: HTMLCanvasElement;
     public trees: Tree[];
     private hills: Hill[];
-    private readonly ctx: CanvasRenderingContext2D;
+    public readonly ctx: CanvasRenderingContext2D;
     private readonly startPositionTree: number;
     private readonly sky: Sky;
     public readonly balloon: Balloon;
@@ -18,7 +16,6 @@ export class Canvas {
     constructor() {
         this.htmlCanvasElement = document.getElementById(settings.canvas.id) as HTMLCanvasElement;
         this.ctx = this.htmlCanvasElement.getContext(settings.canvas.CanvasRenderingContext) as CanvasRenderingContext2D;
-        this.drawables = [];
         this.trees = [];
         this.hills = [];
         this.update();
@@ -35,42 +32,40 @@ export class Canvas {
             ))
         });
         for (let i = 0; i < settings.tree.maxCount; i++) {
-            this.trees.push(new Tree(this.htmlCanvasElement, this.ctx, this.startPositionTree))
-            const min = this.htmlCanvasElement.width * settings.tree.horizontalGap.min
-            const max = this.htmlCanvasElement.width * settings.tree.horizontalGap.max
-            this.startPositionTree += min + Math.random() * (max - min);
+            if (this.startPositionTree + settings.tree.horizontalGap.max + settings.tree.crown.radius.max >= this.htmlCanvasElement.width) {
+                //break;
+            }
+            this.trees.push(new Tree(this));
         }
-        this.balloon = new Balloon(this.htmlCanvasElement, this.ctx);
+        this.balloon = new Balloon(this);
         this.addEventListeners();
-        this.loadDrawable();
         this.draw();
-    }
-
-    loadDrawable() {
-        this.drawables.push(this.sky);
-        this.hills.forEach((hill: Hill) => {
-            this.drawables.push(hill);
-        });
-        this.trees.forEach((tree: Tree) => {
-            this.drawables.push(tree);
-        });
-        this.drawables.push(this.balloon);
     }
 
     update() {
         this.htmlCanvasElement.width = window.innerWidth;
         this.htmlCanvasElement.height = window.innerHeight;
-        this.drawables.forEach((drawable: IDrawable) => {
-            drawable.update();
-            drawable.draw();
+        this.sky?.update();
+        this.hills.forEach((hill: Hill) => {
+            hill.update();
         });
+        this.trees.forEach((tree: Tree) => {
+            tree.update();
+        });
+        this.balloon?.update();
+        this.draw();
     }
 
     draw() {
         this.clear();
-        this.drawables.forEach((drawable: IDrawable) => {
-            drawable.draw();
+        this.sky?.draw();
+        this.hills.forEach((hill: Hill) => {
+            hill.draw();
         });
+        this.trees.forEach((tree: Tree) => {
+            tree.draw();
+        });
+        this.balloon?.draw();
     }
 
     addEventListeners() {
