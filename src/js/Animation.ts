@@ -13,7 +13,7 @@ export class Animation {
             tree.animate();
         });
         if (this.canvas.trees.filter((tree: Tree) => tree.isOutSide).length > 0) {
-            if (Math.random()*10 % 3) {
+            if (Math.random() * 10 % 3) {
                 this.canvas.trees.push(new Tree(this.canvas))
             }
         }

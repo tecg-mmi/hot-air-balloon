@@ -14,7 +14,7 @@
 	.st8{font-family:'Helvetica-Oblique';}
 	.st9{fill:#36A9E1;}
 	.st10{fill:none;stroke:#FF1400;stroke-width:0.5;stroke-linecap:round;stroke-miterlimit:10;}
-	.st11{fill:#FFFFFF;}
+	.st11{fill:none;}
 	.st12{fill:#1D1D1B;}
 </style>
 <g>
@@ -32,16 +32,26 @@
 <path class="st3" d="M559.3,52.6c0,0,19.7,51.5,19.7,152.4s-19.7,152.4-19.7,152.4"/>
 <path class="st4" d="M653.4,52.6c0,0-19.7,51.5-19.7,152.4s19.7,152.4,19.7,152.4"/>
 <circle class="st5" cx="606.3" cy="205" r="3.7"/>
-<text transform="matrix(1 0 0 1 748.7532 177.8027)"><tspan x="0" y="0" class="st6 st7">Point de contrôle </tspan><tspan x="62.5" y="0" class="st6 st7">p</tspan><tspan x="67.6" y="0" class="st6 st7">our les 2 </tspan><tspan x="0" y="9.6" class="st8 st7">quadraticCurveTo()</tspan><tspan x="69.2" y="9.6" class="st6 st7"> </tspan></text>
-<text transform="matrix(1 0 0 1 400.4983 198.8372)"><tspan x="0" y="0" class="st8 st7">lineTo()</tspan><tspan x="0" y="9.6" class="st6 st7">du 1er point au 2e point</tspan></text>
+<text transform="matrix(1 0 0 1 748.7532 177.8027)" class="st6 st7">Point de contrôle </text>
+<text transform="matrix(1 0 0 1 811.2532 177.8027)" class="st6 st7">p</text>
+<text transform="matrix(1 0 0 1 816.3531 177.8027)" class="st6 st7">our les 2 </text>
+<text transform="matrix(1 0 0 1 748.7532 187.4027)" class="st8 st7">quadraticCurveTo()</text>
+<text transform="matrix(1 0 0 1 817.9532 187.4027)" class="st6 st7"> </text>
+<text transform="matrix(1 0 0 1 400.4983 198.8372)" class="st8 st7">lineTo()</text>
+<text transform="matrix(1 0 0 1 400.4983 208.4372)" class="st6 st7">du 1er point au 2e point</text>
 <text transform="matrix(1 0 0 1 600.0005 45.4341)" class="st8 st7">lineTo()</text>
 <text transform="matrix(1 0 0 1 615.1255 372.207)" class="st8 st7">fill()</text>
-<text transform="matrix(1 0 0 1 400.7153 364.751)"><tspan x="0" y="0" class="st6 st7">1er point +</tspan><tspan x="0" y="9.6" class="st8 st7">quadraticCurveTo()</tspan><tspan x="0" y="19.3" class="st6 st7">avec son point de contrôle</tspan></text>
+<text transform="matrix(1 0 0 1 400.7153 364.751)" class="st6 st7">1er point +</text>
+<text transform="matrix(1 0 0 1 400.7153 374.351)" class="st8 st7">quadraticCurveTo()</text>
+<text transform="matrix(1 0 0 1 400.7153 384.051)" class="st6 st7">avec son point de contrôle</text>
 <text transform="matrix(1 0 0 1 593.1868 352.0544)" class="st6 st7">L&apos;origine</text>
-<text transform="matrix(1 0 0 1 406.3335 34.1226)"><tspan x="0" y="0" class="st6 st7">2e point </tspan><tspan x="30.8" y="0" class="st8 st7">quadraticCurveTo()</tspan><tspan x="100" y="0" class="st6 st7"> </tspan><tspan x="0" y="9.6" class="st6 st7">avec le même point de contrôle</tspan></text>
-<line class="st4" x1="559.3" y1="52.6" x2="653.4" y2="52.6"/>
-<line class="st4" x1="559.3" y1="357.4" x2="653.4" y2="357.4"/>
-<circle class="st9" cx="559.3" cy="52.6" r="3.7"/>
+<text transform="matrix(1 0 0 1 706.9728 33.6001)" class="st6 st7">2e point </text>
+<text transform="matrix(1 0 0 1 737.7728 33.6001)" class="st8 st7">quadraticCurveTo()</text>
+<text transform="matrix(1 0 0 1 806.9728 33.6001)" class="st6 st7"> </text>
+<text transform="matrix(1 0 0 1 706.9728 43.2001)" class="st6 st7">avec le même point de contrôle</text>
+<line class="st3" x1="559.3" y1="52.6" x2="653.4" y2="52.6"/>
+<line class="st3" x1="559.3" y1="357.4" x2="653.4" y2="357.4"/>
+<circle class="st9" cx="653.4" cy="52.6" r="3.7"/>
 <circle class="st9" cx="559.3" cy="357.4" r="3.7"/>
 <line class="st10" x1="611.5" y1="357.4" x2="601.2" y2="357.4"/>
 <line class="st10" x1="606.3" y1="362.5" x2="606.3" y2="352.2"/>
@@ -73,11 +83,11 @@
 	</g>
 </g>
 <g>
-	<line class="st11" x1="514" y1="34.1" x2="551.7" y2="50.5"/>
+	<line class="st11" x1="631.5" y1="33.6" x2="669.2" y2="50"/>
 	<g>
-		<line class="st3" x1="514" y1="34.1" x2="546.2" y2="48.1"/>
+		<line class="st3" x1="702.4" y1="33.6" x2="663.7" y2="47.6"/>
 		<g>
-			<path class="st12" d="M551.7,50.5c-3-0.2-7,0.1-9.7,1l3.5-3.7l0.3-5C547,45.3,549.6,48.4,551.7,50.5z"/>
+			<path class="st12" d="M669.2,50c-3-0.2-7,0.1-9.7,1l3.5-3.7l0.3-5C664.5,44.8,667.1,47.9,669.2,50z"/>
 		</g>
 	</g>
 </g>

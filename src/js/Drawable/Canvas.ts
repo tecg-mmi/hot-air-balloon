@@ -28,7 +28,8 @@ export class Canvas {
                 hill.amplitude,
                 hill.height,
                 settings.hill.startPosition + hill.startPosition,
-                hill.color
+                hill.color,
+                hill.withFir
             ))
         });
         for (let i = 0; i < settings.tree.maxCount; i++) {

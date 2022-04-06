@@ -7,9 +7,9 @@ export const settings = {
     hill: {
         startPosition: 60,
         hills: [
-            {amplitude: 18, color: new Hsl(149, 39, 35), height: 35, startPosition: 160},
-            {amplitude: 13, color: new Hsl(149, 39, 45), height: 45, startPosition: 90},
-            {amplitude: 3, color: new Hsl(149, 39, 55), height: 80, startPosition: 0},
+            {amplitude: 18, color: new Hsl(149, 39, 35), height: 35, startPosition: 160, withFir: true},
+            {amplitude: 13, color: new Hsl(149, 39, 45), height: 45, startPosition: 90, withFir: false},
+            {amplitude: 3, color: new Hsl(149, 39, 55), height: 80, startPosition: 0, withFir: false},
         ]
     },
     tree: {
@@ -29,9 +29,9 @@ export const settings = {
         horizontalGap: {min: 1 / 6, max: 1 / 3},
         speedX: 2
     },
-    Balloon: {
+    balloon: {
         velocity: {x: 0, y: 0},
-        maxVelocity:5,
+        maxVelocity: 5,
         velocityHeating: 0.4,
         velocityCooling: 0.4,
         velocityHorizontal: 0.2,
@@ -69,5 +69,15 @@ export const settings = {
     canvas: {
         id: 'my-canvas',
         CanvasRenderingContext: '2d'
+    },
+    fire: {
+        steeps: 130,
+        height: {max: 5, min: 10},
+        width: {max: 2, min: 4},
+        color: new Hsl(149, 39, 55),
+        triangle: {
+            height: {max: 15, min: 25},
+            width: {max: 10, min: 15},
+        }
     }
 }

@@ -18,7 +18,7 @@ export class Balloon implements IDrawable {
         this.canvas = canvas;
         this.ctx = this.canvas.ctx;
         this.isHeating = false;
-        this.velocity = {...settings.Balloon.velocity};
+        this.velocity = {...settings.balloon.velocity};
         this.update();
     }
 
@@ -28,54 +28,52 @@ export class Balloon implements IDrawable {
         this.ctx.translate(this.position.x, this.position.y);
 
         // Cart
-        this.ctx.fillStyle = settings.Balloon.border.color;
-        this.ctx.fillRect(-settings.Balloon.border.dimensions.width / 2, -(settings.Balloon.border.dimensions.height + settings.Balloon.basket.dimensions.height), settings.Balloon.border.dimensions.width, settings.Balloon.border.dimensions.height);
-        this.ctx.fillStyle = settings.Balloon.basket.color;
-        this.ctx.fillRect(-settings.Balloon.basket.dimensions.width / 2, -settings.Balloon.basket.dimensions.height, settings.Balloon.basket.dimensions.width, settings.Balloon.basket.dimensions.height);
+        this.ctx.fillStyle = settings.balloon.border.color;
+        this.ctx.fillRect(-settings.balloon.border.dimensions.width / 2, -(settings.balloon.border.dimensions.height + settings.balloon.basket.dimensions.height), settings.balloon.border.dimensions.width, settings.balloon.border.dimensions.height);
+        this.ctx.fillStyle = settings.balloon.basket.color;
+        this.ctx.fillRect(-settings.balloon.basket.dimensions.width / 2, -settings.balloon.basket.dimensions.height, settings.balloon.basket.dimensions.width, settings.balloon.basket.dimensions.height);
 
         // Cables
-        this.ctx.strokeStyle = settings.Balloon.cable.color;
-        this.ctx.lineWidth = settings.Balloon.cable.dimensions.width;
+        this.ctx.strokeStyle = settings.balloon.cable.color;
+        this.ctx.lineWidth = settings.balloon.cable.dimensions.width;
         this.ctx.beginPath();
-        this.ctx.moveTo(-(settings.Balloon.border.dimensions.width / 2 - settings.Balloon.cable.spaceFromBorder), -(settings.Balloon.border.dimensions.height + settings.Balloon.basket.dimensions.height));
-        this.ctx.lineTo(-(settings.Balloon.border.dimensions.width / 2 - settings.Balloon.cable.spaceFromBorder), -(settings.Balloon.border.dimensions.height + settings.Balloon.basket.dimensions.height + settings.Balloon.cable.dimensions.height));
-        this.ctx.moveTo((settings.Balloon.border.dimensions.width / 2 - settings.Balloon.cable.spaceFromBorder), -(settings.Balloon.border.dimensions.height + settings.Balloon.basket.dimensions.height));
-        this.ctx.lineTo((settings.Balloon.border.dimensions.width / 2 - settings.Balloon.cable.spaceFromBorder), -(settings.Balloon.border.dimensions.height + settings.Balloon.basket.dimensions.height + settings.Balloon.cable.dimensions.height));
-        this.ctx.stroke();
-
-        // Balloon
-        this.ctx.fillStyle = settings.Balloon.balloon.color;
-        this.ctx.beginPath();
-        this.ctx.moveTo(-(settings.Balloon.border.dimensions.width / 2), -(settings.Balloon.basket.dimensions.height + settings.Balloon.cable.dimensions.height));
-        this.ctx.quadraticCurveTo(-settings.Balloon.balloon.radius, -settings.Balloon.balloon.controlPointY, -settings.Balloon.balloon.radius, -(settings.Balloon.balloon.verticalStretch + settings.Balloon.balloon.radius * 2));
-        this.ctx.arc(0, -(settings.Balloon.balloon.verticalStretch + settings.Balloon.balloon.radius * 2), settings.Balloon.balloon.radius, Math.PI, 0, false);
-        this.ctx.quadraticCurveTo(settings.Balloon.balloon.radius, -settings.Balloon.balloon.controlPointY, settings.Balloon.border.dimensions.width / 2, -(settings.Balloon.basket.dimensions.height + settings.Balloon.cable.dimensions.height));
+        this.ctx.moveTo(-(settings.balloon.border.dimensions.width / 2 - settings.balloon.cable.spaceFromBorder), -(settings.balloon.border.dimensions.height + settings.balloon.basket.dimensions.height));
+        this.ctx.lineTo(-(settings.balloon.border.dimensions.width / 2 - settings.balloon.cable.spaceFromBorder), -(settings.balloon.border.dimensions.height + settings.balloon.basket.dimensions.height + settings.balloon.cable.dimensions.height));
+        this.ctx.moveTo((settings.balloon.border.dimensions.width / 2 - settings.balloon.cable.spaceFromBorder), -(settings.balloon.border.dimensions.height + settings.balloon.basket.dimensions.height));
+        this.ctx.lineTo((settings.balloon.border.dimensions.width / 2 - settings.balloon.cable.spaceFromBorder), -(settings.balloon.border.dimensions.height + settings.balloon.basket.dimensions.height + settings.balloon.cable.dimensions.height));
         this.ctx.closePath();
+        this.ctx.stroke();
+        // Balloon
+        this.ctx.fillStyle = settings.balloon.balloon.color;
+        this.ctx.beginPath();
+        this.ctx.moveTo(-(settings.balloon.border.dimensions.width / 2), -(settings.balloon.basket.dimensions.height + settings.balloon.cable.dimensions.height));
+        this.ctx.quadraticCurveTo(-settings.balloon.balloon.radius, -settings.balloon.balloon.controlPointY, -settings.balloon.balloon.radius, -(settings.balloon.balloon.verticalStretch + settings.balloon.balloon.radius * 2));
+        this.ctx.arc(0, -(settings.balloon.balloon.verticalStretch + settings.balloon.balloon.radius * 2), settings.balloon.balloon.radius, Math.PI, 0, false);
+        this.ctx.quadraticCurveTo(settings.balloon.balloon.radius, -settings.balloon.balloon.controlPointY, settings.balloon.border.dimensions.width / 2, -(settings.balloon.basket.dimensions.height + settings.balloon.cable.dimensions.height));
         this.ctx.fill();
+        this.ctx.closePath();
         this.ctx.restore();
     }
 
     update() {
         this.position = {
-            x: settings.Balloon.startPosition.x,
-            y: this.canvas.htmlCanvasElement.height - settings.Balloon.startPosition.y
+            x: settings.balloon.startPosition.x,
+            y: this.canvas.htmlCanvasElement.height - settings.balloon.startPosition.y
         }
-        console.log(this.position)
     }
 
     animate() {
         if (this.isHeating) {
-            this.velocity.y -= settings.Balloon.velocityCooling;
-        } else if (this.velocity.y < settings.Balloon.maxVelocity) {
-            this.velocity.y += settings.Balloon.velocityHeating;
+            this.velocity.y -= settings.balloon.velocityCooling;
+        } else if (this.velocity.y < settings.balloon.maxVelocity) {
+            this.velocity.y += settings.balloon.velocityHeating;
         }
         this.position.y += this.velocity.y;
         if (this.position.y >= this.canvas.htmlCanvasElement.height) {
             this.hitTree = true;
         }
-
         if (this.position.y < this.canvas.htmlCanvasElement.height) {
-            this.position.x += settings.Balloon.velocityHorizontal;
+            this.position.x += settings.balloon.velocityHorizontal;
         }
         this.checkHit();
     }
@@ -84,12 +82,12 @@ export class Balloon implements IDrawable {
         this.canvas.trees.forEach((tree: Tree) => {
             tree.circles.forEach((circle: Circle) => {
                 const bottomRight = {
-                    x: this.position.x + settings.Balloon.basket.dimensions.width / 2,
+                    x: this.position.x + settings.balloon.basket.dimensions.width / 2,
                     y: this.position.y
                 };
 
                 const bottomLeft = {
-                    x: this.position.x - settings.Balloon.basket.dimensions.width / 2,
+                    x: this.position.x - settings.balloon.basket.dimensions.width / 2,
                     y: this.position.y
                 };
                 const circlePosition = {
