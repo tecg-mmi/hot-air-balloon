@@ -4,6 +4,7 @@ import {Canvas} from "./Canvas";
 import {Tree} from "./Tree";
 import {getDistance} from "../Helpers/helpers";
 import {Circle} from "./Circle";
+import {Fuel} from "./Fuel";
 
 export class Balloon implements IDrawable {
     private position: { x: number, y: number };
@@ -12,17 +13,20 @@ export class Balloon implements IDrawable {
     hitTree: boolean;
     private canvas: Canvas;
     private ctx: CanvasRenderingContext2D;
+    private fuel: Fuel;
 
 
     constructor(canvas: Canvas) {
         this.canvas = canvas;
         this.ctx = this.canvas.ctx;
         this.isHeating = false;
+        this.fuel = new Fuel(this.canvas.htmlCanvasElement, this.ctx);
         this.velocity = {...settings.balloon.velocity};
         this.update();
     }
 
     draw() {
+        this.fuel.draw();
         this.ctx.save();
 
         this.ctx.translate(this.position.x, this.position.y);
@@ -56,6 +60,7 @@ export class Balloon implements IDrawable {
     }
 
     update() {
+        this.fuel.update();
         this.position = {
             x: settings.balloon.startPosition.x,
             y: this.canvas.htmlCanvasElement.height - settings.balloon.startPosition.y
@@ -64,7 +69,10 @@ export class Balloon implements IDrawable {
 
     animate() {
         if (this.isHeating) {
-            this.velocity.y -= settings.balloon.velocityCooling;
+            if (this.velocity.y > settings.balloon.minVelocity) {
+                this.velocity.y -= settings.balloon.velocityCooling;
+            }
+            this.fuel.consume(this.velocity.y * -1);
         } else if (this.velocity.y < settings.balloon.maxVelocity) {
             this.velocity.y += settings.balloon.velocityHeating;
         }

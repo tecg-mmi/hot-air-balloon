@@ -32,6 +32,7 @@ export const settings = {
     balloon: {
         velocity: {x: 0, y: 0},
         maxVelocity: 5,
+        minVelocity: -8,
         velocityHeating: 0.4,
         velocityCooling: 0.4,
         velocityHorizontal: 0.2,
@@ -64,7 +65,8 @@ export const settings = {
             radius: 80,
             controlPointY: 120,
             verticalStretch: 0
-        },
+        }
+
     },
     canvas: {
         id: 'my-canvas',
@@ -79,5 +81,15 @@ export const settings = {
             height: {max: 15, min: 25},
             width: {max: 10, min: 15},
         }
+    },
+    fuel: {
+        color: 'hsl(0,93%,35%)',
+        top: 30,
+        left: 30,
+        width: 1 / 8,
+        height: 1 / 40,
+        insetBorderWidth: 4,
+        maxFuel: 10000
+
     }
 }

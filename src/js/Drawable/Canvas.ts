@@ -3,6 +3,7 @@ import {settings} from "../settings";
 import {Hill} from "./Hill";
 import {Tree} from "./Tree";
 import {Balloon} from "./Balloon";
+import {Fuel} from "./Fuel";
 
 export class Canvas {
     public readonly htmlCanvasElement: HTMLCanvasElement;

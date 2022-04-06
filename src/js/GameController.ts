@@ -5,6 +5,7 @@ export class GameController {
     private isStart: boolean;
     private animation: Animation;
     private balloon: Balloon;
+    private fuel: number;
 
     constructor(animation: Animation, balloon: Balloon) {
         this.isStart = false;
