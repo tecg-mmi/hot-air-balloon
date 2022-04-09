@@ -5,28 +5,34 @@ import {Tree} from "./Tree";
 import {getDistance} from "../Helpers/helpers";
 import {Circle} from "./Circle";
 import {Fuel} from "./Fuel";
+import {Meter} from "./Meter";
 
 export class Balloon implements IDrawable {
     private position: { x: number, y: number };
     private velocity: { x: number, y: number };
     public isHeating: boolean;
     hitTree: boolean;
-    private canvas: Canvas;
     private ctx: CanvasRenderingContext2D;
     private fuel: Fuel;
+    private meter: Meter;
+    private trees: Tree[];
+    private gameCanvasElement: HTMLCanvasElement;
 
 
-    constructor(canvas: Canvas) {
-        this.canvas = canvas;
-        this.ctx = this.canvas.ctx;
+    constructor(gameCanvasElement: HTMLCanvasElement, ctx: CanvasRenderingContext2D, trees: Tree[]) {
+        this.gameCanvasElement = gameCanvasElement;
+        this.ctx = ctx;
+        this.trees = trees;
         this.isHeating = false;
-        this.fuel = new Fuel(this.canvas.htmlCanvasElement, this.ctx);
+        this.fuel = new Fuel(this.gameCanvasElement, this.ctx);
+        this.meter = new Meter(document.getElementById(settings.canvas.meters) as HTMLSpanElement);
         this.velocity = {...settings.balloon.velocity};
-        this.update();
+        this.resize();
     }
 
     draw() {
         this.fuel.draw();
+        //this.meter.draw();
         this.ctx.save();
 
         this.ctx.translate(this.position.x, this.position.y);
@@ -59,11 +65,11 @@ export class Balloon implements IDrawable {
         this.ctx.restore();
     }
 
-    update() {
-        this.fuel.update();
+    resize() {
+        this.fuel.resize();
         this.position = {
             x: settings.balloon.startPosition.x,
-            y: this.canvas.htmlCanvasElement.height - settings.balloon.startPosition.y
+            y: this.gameCanvasElement.height - settings.balloon.startPosition.y
         }
     }
 
@@ -77,17 +83,22 @@ export class Balloon implements IDrawable {
             this.velocity.y += settings.balloon.velocityHeating;
         }
         this.position.y += this.velocity.y;
-        if (this.position.y >= this.canvas.htmlCanvasElement.height) {
+        this.position.y = Math.trunc(this.position.y);
+        if (this.position.y >= this.gameCanvasElement.height) {
             this.hitTree = true;
         }
-        if (this.position.y < this.canvas.htmlCanvasElement.height) {
+        if (this.position.y < this.gameCanvasElement.height) {
             this.position.x += settings.balloon.velocityHorizontal;
+            if (Math.trunc(this.position.x) % 6 === 0) {
+                this.meter.updateMeters();
+            }
         }
         this.checkHit();
+        this.draw();
     }
 
     private checkHit() {
-        this.canvas.trees.forEach((tree: Tree) => {
+        this.trees.forEach((tree: Tree) => {
             tree.circles.forEach((circle: Circle) => {
                 const bottomRight = {
                     x: this.position.x + settings.balloon.basket.dimensions.width / 2,

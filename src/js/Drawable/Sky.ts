@@ -9,7 +9,7 @@ export class Sky implements IDrawable {
     constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
         this.canvas = canvas;
         this.ctx = ctx;
-        this.update();
+        this.resize();
     }
 
     generateGradient() {
@@ -26,7 +26,7 @@ export class Sky implements IDrawable {
         this.ctx.closePath();
     }
 
-    update() {
+    resize() {
         this.generateGradient();
     }
 

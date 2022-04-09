@@ -7,7 +7,7 @@ import {Canvas} from "./Canvas";
 
 
 export class Tree implements IDrawable, IAnimate {
-    private readonly canvas: Canvas;
+    public readonly gameCanvasElement: HTMLCanvasElement;
     private height: number;
     private trunkColor: string;
     public position: { x: number, y: number }
@@ -22,10 +22,10 @@ export class Tree implements IDrawable, IAnimate {
     private speedX: number;
 
 
-    constructor(canvas: Canvas) {
-        this.canvas = canvas;
-        this.ctx = this.canvas.ctx;
-        this.trees = this.canvas.trees;
+    constructor(gameCanvasElement: HTMLCanvasElement, ctx: CanvasRenderingContext2D, trees: Tree[]) {
+        this.gameCanvasElement = gameCanvasElement;
+        this.ctx = ctx;
+        this.trees = trees;
         this.speedX = settings.tree.speedX;
         this.height = random2(settings.tree.trunk.height);
         this.trunkColor = settings.tree.trunk.color.update(35, 45, 15, 20).toString();
@@ -44,10 +44,10 @@ export class Tree implements IDrawable, IAnimate {
             }, this.crownRadius));
         }
         this.position = {
-            x: this.trees.length < 1 ? settings.tree.horizontalStart * this.canvas.htmlCanvasElement.width : this.trees[this.trees.length - 1].position.x + random2(settings.tree.horizontalGap) * this.canvas.htmlCanvasElement.width,
-            y: this.canvas.htmlCanvasElement.height - this.verticalStart
+            x: this.trees.length < 1 ? settings.tree.horizontalStart : this.trees[this.trees.length - 1].position.x + random2(settings.tree.horizontalGap),
+            y: this.gameCanvasElement.height - this.verticalStart
         };
-        this.update();
+        this.resize();
     }
 
 
@@ -71,8 +71,8 @@ export class Tree implements IDrawable, IAnimate {
     }
 
 
-    update() {
-        this.position.y = this.canvas.htmlCanvasElement.height - this.verticalStart;
+    resize() {
+        this.position.y = this.gameCanvasElement.height - this.verticalStart;
     }
 
     animate() {
@@ -80,6 +80,7 @@ export class Tree implements IDrawable, IAnimate {
             this.isOutSide = true;
         }
         this.position.x -= this.speedX;
+        this.draw()
     }
 
 }

@@ -1,7 +1,8 @@
 import {Canvas} from "./Canvas";
 import {settings} from "../settings";
+import {IDrawable} from "../Interfaces/IDrawable";
 
-export class Fuel {
+export class Fuel implements IDrawable{
     private htmlCanvasElement: HTMLCanvasElement;
     private ctx: CanvasRenderingContext2D;
     private width: number;
@@ -11,14 +12,14 @@ export class Fuel {
     constructor(htmlCanvasElement: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
         this.htmlCanvasElement = htmlCanvasElement;
         this.ctx = ctx;
-        this.update();
+        this.resize();
         this.reset();
     }
 
     draw() {
         this.ctx.strokeStyle = settings.fuel.color;
         this.ctx.beginPath();
-        this.ctx.rect(settings.fuel.left, settings.fuel.top, settings.fuel.width * this.htmlCanvasElement.width, settings.fuel.height * this.htmlCanvasElement.height);
+        this.ctx.rect(settings.fuel.left, settings.fuel.top, settings.fuel.width, settings.fuel.height);
         this.ctx.stroke();
         this.ctx.closePath();
         this.ctx.beginPath();
@@ -29,9 +30,9 @@ export class Fuel {
 
     }
 
-    update() {
-        this.width = settings.fuel.width * this.htmlCanvasElement.width - settings.fuel.insetBorderWidth * 2;
-        this.height = settings.fuel.height * this.htmlCanvasElement.height - settings.fuel.insetBorderWidth * 2;
+    resize() {
+        this.width = settings.fuel.width - settings.fuel.insetBorderWidth * 2;
+        this.height = settings.fuel.height - settings.fuel.insetBorderWidth * 2;
     }
 
     reset() {

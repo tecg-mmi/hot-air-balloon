@@ -26,7 +26,7 @@ export class Hill implements IDrawable {
         this.height = height;
         this.startPosition = startPosition;
         this.color = color;
-        this.update();
+        this.resize();
     }
 
     draw() {
@@ -45,7 +45,7 @@ export class Hill implements IDrawable {
         });
     }
 
-    update() {
+    resize() {
         this.points = [];
         this.firs = [];
         for (let i = 0; i < this.canvas.width; i++) {

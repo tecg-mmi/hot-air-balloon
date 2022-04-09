@@ -9,16 +9,7 @@ export class Animation {
     }
 
     animate() {
-        this.canvas.trees.forEach((tree: Tree) => {
-            tree.animate();
-        });
-        if (this.canvas.trees.filter((tree: Tree) => tree.isOutSide).length > 0) {
-            if (Math.random() * 10 % 3) {
-                this.canvas.trees.push(new Tree(this.canvas))
-            }
-        }
-        this.canvas.balloon.animate();
-        this.canvas.draw();
+        this.canvas.animate();
         if (this.canvas.balloon.hitTree) {
             return
         }

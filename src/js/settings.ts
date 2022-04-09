@@ -25,8 +25,8 @@ export const settings = {
         },
         maxCount: 5,
         verticalStart: {min: 0, max: 60},
-        horizontalStart: 1 / 3,
-        horizontalGap: {min: 1 / 6, max: 1 / 3},
+        horizontalStart: 400,
+        horizontalGap: {min: 100, max: 600},
         speedX: 2
     },
     balloon: {
@@ -69,7 +69,9 @@ export const settings = {
 
     },
     canvas: {
-        id: 'my-canvas',
+        background: 'background',
+        game: 'game',
+        meters: 'meter',
         CanvasRenderingContext: '2d'
     },
     fire: {
@@ -83,11 +85,11 @@ export const settings = {
         }
     },
     fuel: {
-        color: 'hsl(0,93%,35%)',
+        color: 'hsl(334,85%,46%)',
         top: 30,
         left: 30,
-        width: 1 / 8,
-        height: 1 / 40,
+        width: 300,
+        height: 30,
         insetBorderWidth: 4,
         maxFuel: 10000
 
