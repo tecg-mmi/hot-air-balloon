@@ -11,28 +11,23 @@ export class Balloon implements IDrawable {
     private position: { x: number, y: number };
     private velocity: { x: number, y: number };
     public isHeating: boolean;
-    hitTree: boolean;
+    public gameOver: boolean;
     private ctx: CanvasRenderingContext2D;
     private fuel: Fuel;
     private meter: Meter;
     private trees: Tree[];
     private gameCanvasElement: HTMLCanvasElement;
-
+    public message: String;
 
     constructor(gameCanvasElement: HTMLCanvasElement, ctx: CanvasRenderingContext2D, trees: Tree[]) {
         this.gameCanvasElement = gameCanvasElement;
         this.ctx = ctx;
-        this.trees = trees;
-        this.isHeating = false;
-        this.fuel = new Fuel(this.gameCanvasElement, this.ctx);
-        this.meter = new Meter(document.getElementById(settings.canvas.meters) as HTMLSpanElement);
-        this.velocity = {...settings.balloon.velocity};
-        this.resize();
+        this.reset(trees)
     }
 
     draw() {
         this.fuel.draw();
-        //this.meter.draw();
+        this.meter.draw();
         this.ctx.save();
 
         this.ctx.translate(this.position.x, this.position.y);
@@ -78,14 +73,21 @@ export class Balloon implements IDrawable {
             if (this.velocity.y > settings.balloon.minVelocity) {
                 this.velocity.y -= settings.balloon.velocityCooling;
             }
-            this.fuel.consume(this.velocity.y * -1);
+            this.fuel.consume(this.velocity.y * -1.3);
+            if (this.fuel.fuelQuantity <= 0) {
+                this.gameOver = true;
+                this.message = settings.messages.fuel;
+                return;
+            }
         } else if (this.velocity.y < settings.balloon.maxVelocity) {
             this.velocity.y += settings.balloon.velocityHeating;
         }
         this.position.y += this.velocity.y;
         this.position.y = Math.trunc(this.position.y);
         if (this.position.y >= this.gameCanvasElement.height) {
-            this.hitTree = true;
+            this.message = settings.messages.floor;
+            this.gameOver = true;
+            return;
         }
         if (this.position.y < this.gameCanvasElement.height) {
             this.position.x += settings.balloon.velocityHorizontal;
@@ -115,14 +117,27 @@ export class Balloon implements IDrawable {
                 }
 
                 if (getDistance(bottomRight, circlePosition) <= circle.radius) {
-                    this.hitTree = true;
+                    this.gameOver = true;
+                    this.message = settings.messages.hitTree;
                     return;
                 }
                 if (getDistance(bottomLeft, circlePosition) <= circle.radius) {
-                    this.hitTree = true;
+                    this.message = settings.messages.hitTree;
+                    this.gameOver = true;
                     return;
                 }
             });
         });
+    }
+
+    reset(trees: Tree[]) {
+        this.message = "";
+        this.gameOver = false;
+        this.trees = trees;
+        this.isHeating = false;
+        this.fuel = new Fuel(this.gameCanvasElement, this.ctx);
+        this.meter = new Meter(document.getElementById(settings.canvas.meters) as HTMLSpanElement);
+        this.velocity = {...settings.balloon.velocity};
+        this.resize();
     }
 }

@@ -16,7 +16,7 @@ export const settings = {
         trunk: {
             color: new Hsl(345, 60, 11),
             width: {min: 25, max: 43},
-            height: {min: 125, max: 300},
+            height: {min: 125, max: 450},
         },
         crown: {
             color: new Hsl(154, 90, 11),
@@ -26,7 +26,7 @@ export const settings = {
         maxCount: 5,
         verticalStart: {min: 0, max: 60},
         horizontalStart: 400,
-        horizontalGap: {min: 100, max: 600},
+        horizontalGap: {min: 100, max: 700},
         speedX: 2
     },
     balloon: {
@@ -92,6 +92,10 @@ export const settings = {
         height: 30,
         insetBorderWidth: 4,
         maxFuel: 10000
-
+    },
+    messages: {
+        hitTree: "Oh  non. 🤯 Vous avez percuté un arbre. Essayez encore une fois!",
+        floor: "Zut, vous êtes sur le sol 👀...Recommencez!",
+        fuel: "Vous n’avez plus de carburant. 🥵 Essayez d’aller plus loin la prochaine fois !"
     }
 }

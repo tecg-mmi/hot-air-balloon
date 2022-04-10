@@ -26,6 +26,10 @@ export class Tree implements IDrawable, IAnimate {
         this.gameCanvasElement = gameCanvasElement;
         this.ctx = ctx;
         this.trees = trees;
+        this.init(true);
+    }
+
+    init(atStart: boolean = false) {
         this.speedX = settings.tree.speedX;
         this.height = random2(settings.tree.trunk.height);
         this.trunkColor = settings.tree.trunk.color.update(35, 45, 15, 20).toString();
@@ -43,13 +47,18 @@ export class Tree implements IDrawable, IAnimate {
                 y: -this.height + Math.sin(i) * random2(settings.tree.crown.radius) / 2
             }, this.crownRadius));
         }
-        this.position = {
-            x: this.trees.length < 1 ? settings.tree.horizontalStart : this.trees[this.trees.length - 1].position.x + random2(settings.tree.horizontalGap),
-            y: this.gameCanvasElement.height - this.verticalStart
-        };
-        this.resize();
+        if (atStart) {
+            this.position = {
+                x: this.trees.length < 1 ? settings.tree.horizontalStart : this.trees[this.trees.length - 1].position.x + random2(settings.tree.horizontalGap),
+                y: this.gameCanvasElement.height - this.verticalStart
+            };
+        } else {
+            this.position = {
+                x: this.gameCanvasElement.width + random2(settings.tree.horizontalGap),
+                y: this.gameCanvasElement.height - this.verticalStart
+            };
+        }
     }
-
 
     draw() {
         this.ctx.save();
@@ -62,7 +71,6 @@ export class Tree implements IDrawable, IAnimate {
         this.ctx.quadraticCurveTo(this.trunkWidth / 4, -this.height / 2, this.trunkWidth / 2, 0);
         this.ctx.closePath();
         this.ctx.fill();
-
         this.ctx.fillStyle = this.crownColor;
         this.circles.forEach((circle: Circle) => {
             circle.draw();
@@ -70,14 +78,13 @@ export class Tree implements IDrawable, IAnimate {
         this.ctx.restore();
     }
 
-
     resize() {
         this.position.y = this.gameCanvasElement.height - this.verticalStart;
     }
 
     animate() {
         if (this.position.x + this.crownRadius + settings.tree.crown.radius.max < 0) {
-            this.isOutSide = true;
+            this.init();
         }
         this.position.x -= this.speedX;
         this.draw()

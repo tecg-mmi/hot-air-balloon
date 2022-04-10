@@ -7,7 +7,7 @@ export class Fuel implements IDrawable{
     private ctx: CanvasRenderingContext2D;
     private width: number;
     private height: number;
-    private fuelQuantity: number;
+    public fuelQuantity: number;
 
     constructor(htmlCanvasElement: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
         this.htmlCanvasElement = htmlCanvasElement;
