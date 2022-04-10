@@ -77,7 +77,6 @@ export class Balloon implements IDrawable {
             if (this.fuel.fuelQuantity <= 0) {
                 this.gameOver = true;
                 this.message = settings.messages.fuel;
-                return;
             }
         } else if (this.velocity.y < settings.balloon.maxVelocity) {
             this.velocity.y += settings.balloon.velocityHeating;
@@ -87,7 +86,6 @@ export class Balloon implements IDrawable {
         if (this.position.y >= this.gameCanvasElement.height) {
             this.message = settings.messages.floor;
             this.gameOver = true;
-            return;
         }
         if (this.position.y < this.gameCanvasElement.height) {
             this.position.x += settings.balloon.velocityHorizontal;
