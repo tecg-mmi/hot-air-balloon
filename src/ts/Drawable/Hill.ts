@@ -7,19 +7,16 @@ export class Hill implements Animatable {
     private readonly canvas: Canvas;
     private readonly color: Hsl;
     private readonly startPosition: number;
-    private points: Position[] = [];
+    private readonly amplitude: number;
+    private readonly height: number;
 
 
-    constructor(canvas: Canvas, color: Hsl, startPosition: number) {
+    constructor(canvas: Canvas, color: Hsl, startPosition: number, amplitude: number, height: number) {
         this.canvas = canvas;
         this.color = color;
         this.startPosition = startPosition;
-        for (let i = 0; i < this.canvas.width; i++) {
-            this.points.push({
-                x: i,
-                y: this.canvas.height - this.startPosition
-            })
-        }
+        this.amplitude = amplitude;
+        this.height = height;
     }
 
     draw(): void {
@@ -27,9 +24,9 @@ export class Hill implements Animatable {
         ctx.beginPath();
         ctx.moveTo(0, this.canvas.height);
         ctx.lineTo(0, this.canvas.height - this.startPosition);
-        this.points.forEach((point) => {
-            ctx.lineTo(point.x, point.y);
-        });
+        for (let i = 0; i < this.canvas.width; i++) {
+            ctx.lineTo(i, (this.canvas.height - this.startPosition) - Math.sin(i * this.amplitude / this.canvas.width) * this.height / 2);
+        }
         ctx.lineTo(this.canvas.width, this.canvas.height);
         ctx.fillStyle = `${this.color}`;
         ctx.closePath();

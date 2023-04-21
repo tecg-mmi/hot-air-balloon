@@ -10,7 +10,7 @@ function main() {
     const sky = new Sky(canvas);
     sky.draw();
 
-    const hill = new Hill(canvas, settings.hills[0].color, settings.hills[0].startPosition);
+    const hill = new Hill(canvas, settings.hills[0].color, settings.hills[0].startPosition, settings.hills[0].amplitude, settings.hills[0].height);
     hill.draw();
 
     window.addEventListener('resize', () => {

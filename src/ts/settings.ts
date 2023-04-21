@@ -5,9 +5,9 @@ export const settings = {
         gradient: [new Hsl(200, 95, 33), new Hsl(200, 95, 80)]
     },
     hills: [
-        {amplitude: 18, color: new Hsl(149, 39, 35), height: 35, startPosition: 160, withFir: true},
-        {amplitude: 13, color: new Hsl(149, 39, 45), height: 45, startPosition: 90, withFir: false},
-        {amplitude: 3, color: new Hsl(149, 39, 55), height: 80, startPosition: 0, withFir: false},
+        {amplitude: 18, color: new Hsl(149, 39, 35), height: 35, startPosition: 220, withFir: true},
+        {amplitude: 13, color: new Hsl(149, 39, 45), height: 45, startPosition: 150, withFir: false},
+        {amplitude: 3, color: new Hsl(149, 39, 55), height: 80, startPosition: 60, withFir: false},
     ],
     tree: {
         trunk: {
