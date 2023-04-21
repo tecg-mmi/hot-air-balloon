@@ -1,4 +1,4 @@
-import {Hsl} from "../../../canvas-framework-23/src/ts/Colors/Hsl";
+import {Hsl} from "./framework-2023/Colors/Hsl";
 
 export const settings = {
     sky: {
