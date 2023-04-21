@@ -4,14 +4,11 @@ export const settings = {
     sky: {
         gradient: [new Hsl(200, 95, 33), new Hsl(200, 95, 80)]
     },
-    hill: {
-        startPosition: 60,
-        hills: [
-            {amplitude: 18, color: new Hsl(149, 39, 35), height: 35, startPosition: 160, withFir: true},
-            {amplitude: 13, color: new Hsl(149, 39, 45), height: 45, startPosition: 90, withFir: false},
-            {amplitude: 3, color: new Hsl(149, 39, 55), height: 80, startPosition: 0, withFir: false},
-        ]
-    },
+    hills: [
+        {amplitude: 18, color: new Hsl(149, 39, 35), height: 35, startPosition: 160, withFir: true},
+        {amplitude: 13, color: new Hsl(149, 39, 45), height: 45, startPosition: 90, withFir: false},
+        {amplitude: 3, color: new Hsl(149, 39, 55), height: 80, startPosition: 0, withFir: false},
+    ],
     tree: {
         trunk: {
             color: new Hsl(345, 60, 11),
