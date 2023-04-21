@@ -4,14 +4,19 @@ import {settings} from "./settings";
 import {Hill} from "./Drawable/Hill";
 
 function main() {
+    const hills: Hill[] = [];
     const start = document.querySelector(settings.elements.start);
     start.classList.add('hide');
     const canvas = new Canvas(document.getElementById(settings.canvas.background) as HTMLCanvasElement);
     const sky = new Sky(canvas);
     sky.draw();
 
-    const hill = new Hill(canvas, settings.hills[0].color, settings.hills[0].startPosition, settings.hills[0].amplitude, settings.hills[0].height);
-    hill.draw();
+    settings.hills.forEach((hill) => {
+        const currentHill = new Hill(canvas, hill.color, hill.startPosition, hill.amplitude, hill.radius);
+        currentHill.draw();
+        hills.push(currentHill);
+
+    });
 
     window.addEventListener('resize', () => {
         sky.draw();
