@@ -2,7 +2,7 @@ import {Hsl} from "./framework-2023/Colors/Hsl";
 
 export const settings = {
     sky: {
-        gradient: ['hsl(200, 95%, 33%)', 'hsl(200, 95%, 80%)']
+        gradient: [new Hsl(200, 95, 33), new Hsl(200, 95, 80)]
     },
     hill: {
         startPosition: 60,
@@ -92,6 +92,10 @@ export const settings = {
         height: 30,
         insetBorderWidth: 4,
         maxFuel: 10000
+    },
+    elements: {
+        start: '.start',
+        hide: 'hide'
     },
     messages: {
         hitTree: "Oh  non. 🤯 Vous avez percuté un arbre. Essayez encore une fois!",
