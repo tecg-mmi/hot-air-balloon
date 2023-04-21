@@ -4,6 +4,14 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "sourceMap": true
-  }
+    "sourceMap": true,
+    "target": "es6"
+  },
+  "references": [
+    {
+      "path": "../../../canvas-framework-23/src/ts",
+      // add 'prepend' if you want to include the referenced project in your output file
+      "prepend": true
+    }
+  ]
 }
