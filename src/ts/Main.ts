@@ -1,6 +1,7 @@
 import {Canvas} from "./Drawable/Canvas";
 import {Animation} from "./Animation";
 import {GameController} from "./GameController";
+import {IDrawable} from "./Interfaces/IDrawable";
 
 class Main {
     private readonly canvas: Canvas;
